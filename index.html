@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Language Model Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+    h1, h2 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+    th, td { border: 1px solid #ccc; padding: 12px; text-align: center; }
+    th { background-color: #f5f5f5; }
+    audio { width: 220px; }
+    .caption { text-align: center; font-size: 0.95em; color: #555; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>Speech Language Model Demo</h1>
+<p style="text-align:center;">
+  Audio samples for zero-shot TTS evaluation. Given the text transcription and the first 3 seconds as the prompt, we ask the model to continue the utterance.
+</p>
+
+<h2>Zero-shot TTS Samples: MELD v.s. Codec-LM</h2>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Reference</th>
+    <th>Ground Truth</th>
+    <th>Codec-LM</th>
+    <th>MELD</th>
+    <th>MELD (joint)</th>
+  </tr>
+  
+  <tr>
+    <td><em>"and then he told all about his youth and the little mice had never heard the like before and they listened and said"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_14.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_14.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_14.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_14.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_14.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"beth was a beautiful girl the handsomest of the three cousins by far yet eliza surpassed her in natural charm and seemed well aware of the fact"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_22.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_22.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_22.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_22.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_22.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"cyril there must be some better way of doing i just draw the outline of an animal and then i put hairs or feathers on it they have no bodies"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_20.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"disdainful of a success of which madame showed no acknowledgement he thought of nothing but boldly regaining the marked preference of the princess"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_9.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_9.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_9.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_9.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_9.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"gold is the most common metal in the land of oz and is used for many purposes because it is soft and pliable"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_8.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_8.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_8.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_8.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_8.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"he detested the grasping disposition that would endeavor to take advantage of his evident desire to help young gates"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_17.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_17.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_17.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_17.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_17.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <!--
+  <tr>
+    <td><em>"he was a fanatic on formality and he only addressed me in the third person to the point where it got tiresome"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_16.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_16.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_16.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_16.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_16.flac" type="audio/flac"></audio></td>
+  </tr>
+  -->
+
+  <tr>
+    <td><em>"her hair is still like flax and her blue eyes are just like a baby's and she has the same three freckles on her little nose and talks about going back to her bains de mer"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_7.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_7.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_7.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_7.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_7.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"her manner was neither independent nor assertive but rather one of well bred composure and calm reliance"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_6.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_6.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_6.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_6.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_6.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"it is evident therefore that the present trend of the development is in the direction of heightening the utility of conspicuous consumption as compared with leisure"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_5.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_5.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_5.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_5.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_5.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"it presents like no other of luther's writings the central thought of christianity the justification of the sinner for the sake of christ's merits alone"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_4.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_4.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_4.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_4.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_4.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"it was silent and gloomy being tenanted solely by the captive and lighted by the dying embers of a fire which had been used for the purposed of cookery"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_3.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_3.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_3.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_3.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_3.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"mistress fitzooth had been carried off by the sheriff's daughter and her maids as soon as they had entered the house so that robin alone had the care of montfichet"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_19.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_19.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_19.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_19.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_19.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"nay dear aunt you never heard me say that all people are called to forsake their work and their families"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_2.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_2.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_2.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_2.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_2.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"ten days were consumed in these negotiations but the spirit of vengeance refused to yield"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_13.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_13.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_13.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_13.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_13.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"the eyes of the whole party followed the unexpected movement and read their success in the air of triumph that the youth assumed"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_18.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_18.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_18.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_18.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_18.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"the peculiar circumstances of the colony are within your excellency's knowledge"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_15.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_15.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_15.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_15.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_15.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"the result is a great mobility of the labor employed in printing perhaps greater than in any other equally well defined and considerable body of workmen"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_12.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_12.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_12.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_12.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_12.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"these thoughts agitated me all day and my imagination scarcely calmed down after several hours sleep"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_11.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_11.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_11.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_11.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_11.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"unc knocked at the door of the house and a chubby pleasant faced woman dressed all in blue opened it and greeted the visitors with a smile"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_1.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_1.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_1.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_1.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_1.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"yea his honourable worship is within but he hath a godly minister or two with him and likewise a leech"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_10.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_10.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_10.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_10.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_10.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <!--
+  <tr>
+    <td><em>"then of a sudden at midday the sun shot out hot and still no breath of air stirred the sky was like blue steel the earth steamed"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/sample_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f831930970/sample_26.flac" type="audio/flac"></audio></td>
+  </tr>
+  -->
+</table>
+
+<h2>Zero-shot TTS Samples: MELLE v.s. MELD</h2>
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Reference</th>
+    <th>Ground Truth</th>
+    <th>MELLE (our reproduction)</th>
+    <th>MELD</th>
+  </tr>
+  <tr>
+    <td><em>"they set up a crane over the fire and hung the pot upon it and we sat and watched it boil while we joked at last the supper began"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_23.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_23.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_23.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_23.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"and with it i leave you a name sif the friendly i shall hope to drink with you sometime in valhalla"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_24.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_24.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_24.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_24.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"to night there was no need of extra heat and there were great ceremonies to be observed in lighting the fires on the hearthstones"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_25.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_25.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_25.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_25.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <!--
+  <tr>
+    <td><em>"then of a sudden at midday the sun shot out hot and still no breath of air stirred the sky was like blue steel the earth steamed"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_26.flac" type="audio/flac"></audio></td>
+  </tr>
+  -->
+
+  <tr>
+    <td><em>"rodolfo and his companions with their faces muffled in their cloaks stared rudely and insolently at the mother the daughter and the servant maid"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_27.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_27.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_27.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_27.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"fortunately said mister vanderpool northerners and southerners are arriving at a better mutual understanding on most of these matters"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_28.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_28.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_28.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_28.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"positively heroic added cresswell avoiding his sister's eyes"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_29.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_29.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_29.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_29.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"i am not depreciating it when i say that in these times it is not rare"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_30.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_30.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_30.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_30.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"you'll easily judge why when you hear because the thing had been such a scare he continued to fix me"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_31.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_31.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_31.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_31.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"harangue the tiresome product of a tireless tongue"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_32.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_32.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f789493951/sample_32.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_32.flac" type="audio/flac"></audio></td>
+  </tr>
+</table>
+
+<h2>Zero-shot TTS Samples: w/ repetition penalty v.s. w/o repetition penalty</h2>
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Reference</th>
+    <th>Ground Truth</th>
+    <th>MELD (w/o repetition penalty)</th>
+    <th>MELD</th>
+  </tr>
+  <tr>
+    <td><em>"cyril there must be some better way of doing i just draw the outline of an animal and then i put hairs or feathers on it they have no bodies"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0//sample_20.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_20.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"they set up a crane over the fire and hung the pot upon it and we sat and watched it boil while we joked at last the supper began"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_23.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_23.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0//sample_23.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_23.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"and with it i leave you a name sif the friendly i shall hope to drink with you sometime in valhalla"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_24.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_24.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0//sample_24.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_24.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"to night there was no need of extra heat and there were great ceremonies to be observed in lighting the fires on the hearthstones"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_25.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_25.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0/sample_25.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_25.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <!--
+  <tr>
+    <td><em>"then of a sudden at midday the sun shot out hot and still no breath of air stirred the sky was like blue steel the earth steamed"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0/sample_26.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_26.flac" type="audio/flac"></audio></td>
+  </tr>
+  -->
+
+  <tr>
+    <td><em>"rodolfo and his companions with their faces muffled in their cloaks stared rudely and insolently at the mother the daughter and the servant maid"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_27.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_27.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0/sample_27.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_27.flac" type="audio/flac"></audio></td>
+  </tr>
+
+  <tr>
+    <td><em>"fortunately said mister vanderpool northerners and southerners are arriving at a better mutual understanding on most of these matters"</em></td>
+    <td><audio controls><source src="test_samples/f768407035/ref_28.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f768407035/gt_28.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878_penalty0/sample_28.flac" type="audio/flac"></audio></td>
+    <td><audio controls><source src="test_samples/f821282878/sample_28.flac" type="audio/flac"></audio></td>
+  </tr>
+</table>
+
+</body>
+</html>
